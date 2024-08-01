@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'responsive_widget.dart';
@@ -77,7 +78,7 @@ class MyProjects extends StatelessWidget {
                     color:Colors.red,
                     height: MediaQuery.of(context).size.width * .3,
                     width: MediaQuery.of(context).size.width * .3,
-                    child: Image.asset(project.image!),
+                    child: Image.asset(project.image!,fit: BoxFit.cover,),
                   ),
                   SizedBox(width: MediaQuery.of(context).size.width * .070),
                   Expanded(
@@ -87,11 +88,11 @@ class MyProjects extends StatelessWidget {
                         SizedBox(
                           height: MediaQuery.of(context).size.width * .01,
                         ),
-                        Text(project.name!, style: AppStyles.title),
+                        Text(project.name!, style: GoogleFonts.poppins(fontSize: 28,fontWeight: FontWeight.w600,color: Colors.black87)),
                         SizedBox(
                           height: MediaQuery.of(context).size.width * .01,
                         ),
-                        Text(project.description!),
+                        Text(project.description!, style: GoogleFonts.poppins(fontWeight: FontWeight.w500)),
                         SizedBox(
                           height: MediaQuery.of(context).size.width * .025,
                         ),
@@ -101,10 +102,10 @@ class MyProjects extends StatelessWidget {
                           children: project.skills!
                               .map((s) => Chip(
                               backgroundColor: Colors.grey.withOpacity(0.3),
-                              side: BorderSide.none,
+                              side: BorderSide(color: Colors.grey.withOpacity(0.1),width: 1),
                               surfaceTintColor: Colors.transparent,
                               shape: StadiumBorder(),
-                              label: Text(s)))
+                              label: Text(s, style: GoogleFonts.poppins(fontWeight: FontWeight.w400,fontSize: 13))))
                               .toList(),
                         ),
                         SizedBox(
@@ -112,9 +113,10 @@ class MyProjects extends StatelessWidget {
                         ),
                         OutlinedButton(
                           onPressed: () {
-                            launch(project.url!);
+                            // launch(project.url!);
                           },
                           style: ElevatedButton.styleFrom(
+
                             side: BorderSide(
                               color: AppColors.yellow!.withOpacity(.5),
                                 width: 1,
@@ -128,7 +130,7 @@ class MyProjects extends StatelessWidget {
                             ),
                           ),
 
-                          child: Text('Visit',style:TextStyle(color: AppColors.yellow)),
+                          child: Text('Code',style:TextStyle(color: AppColors.yellow)),
                         ),
                       ],
                     ),
