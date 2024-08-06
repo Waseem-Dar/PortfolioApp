@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -21,7 +22,7 @@ class About extends StatelessWidget {
   @override
   Widget build(BuildContext context) => ResponsiveWidget(
         desktopScreen: Container(
-          color: Colors.white,
+          color: Color(0xFFECF0F3),
           child: Column(
             children: [
               Padding(
@@ -35,89 +36,125 @@ class About extends StatelessWidget {
                 child: Row(
                   children: [
                     Container(
-                      width: MediaQuery.of(context).size.width * 0.35,
-                      height: MediaQuery.of(context).size.width * 0.22,
-                      margin: const EdgeInsets.only(top: 20),
-                      child: Stack(
-                        children: [
-                          // Image background
-                          Container(
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage(menImage),
-                                fit: BoxFit.fill,
-                              ),
-                            ),
+                      width: MediaQuery.of(context).size.width * 0.32,
+                      height: MediaQuery.of(context).size.width * 0.32,
+                      padding: EdgeInsets.all(25),
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [Colors.white, Color(0xFFe2e8ec)],
+                          begin: Alignment.bottomRight, end: Alignment.topLeft,
+                        ),
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.white,blurRadius: 10, offset: Offset(-5, -5),
                           ),
-                          // Gradient overlay
-                          Container(
-                            decoration: const BoxDecoration(
-                              gradient: LinearGradient(
-                                colors: [
-                                  Colors.transparent,
-                                  Colors.transparent,
-                                  Colors.white,
-                                ],
-                                begin: Alignment.centerLeft,
-                                end: Alignment.centerRight,
-                                stops: [0.0, 0.5, 1.0],
-                                tileMode: TileMode.clamp,
-                              ),
-                            ),
+                          BoxShadow(
+                            color: Color(0xFFD1D9E6), blurRadius: 15, offset: Offset(5, 5),
                           ),
                         ],
                       ),
+                                                                                  // Image background
+                          child:Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              image: DecorationImage(
+                                image: AssetImage(menImage),
+                                fit: BoxFit.cover,alignment: Alignment.center
+                              ),
+                            ),
+                          ),
                     ),
 
                     const SizedBox(width: 20),
                     Expanded(
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            'ABOUT ME',
-                            style: GoogleFonts.caveat(
-                              color: AppColors.yellow,
-                              fontSize: 40,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Text(
-                            _description,
-                            style: GoogleFonts.poppins(
-                              color: Colors.black,
-                              fontSize: 15,
-                            ),
-                          ),
-                          const SizedBox(height: 30),
-                          Row(
-                            children: [
-                              ElevatedButton(
-                                onPressed: () {},
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: AppColors.yellow,
-                                  textStyle: TextStyle(color: Colors.white),
-                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 30,vertical: 20),
-                                ),
-
-                                child: Text('HIRE ME NOW',style: TextStyle(color: Colors.white),),
+                          Container(
+                            height: MediaQuery.of(context).size.width*0.20,
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [Colors.white, Color(0xFFe2e8ec)],
+                                begin: Alignment.bottomRight, end: Alignment.topLeft,
                               ),
-                              const SizedBox(width: 20),
-                              ElevatedButton(
-                                onPressed: _downloadCV,
-                                style: ElevatedButton.styleFrom(
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.white,blurRadius: 10, offset: Offset(-5, -5),
+                                ),
+                                BoxShadow(
+                                  color: Color(0xFFD1D9E6), blurRadius: 15, offset: Offset(5, 5),
+                                ),
+                              ],
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'ABOUT ME',
+                                  style: GoogleFonts.caveat(
+                                    color: AppColors.yellow,
+                                    fontSize: 40,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                Text(
+                                  _description,
+                                  style: GoogleFonts.poppins(
+                                    color: Color(0xFF3c3e41),
+                                    fontSize: 15,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: MediaQuery.of(context).size.width *0.020,),
+                          Container(
+                            height: MediaQuery.of(context).size.width*0.11,
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [Colors.white, Color(0xFFe2e8ec)],
+                                begin: Alignment.bottomRight, end: Alignment.topLeft,
+                              ),
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.white,blurRadius: 10, offset: Offset(-5, -5),
+                                ),
+                                BoxShadow(
+                                  color: Color(0xFFD1D9E6), blurRadius: 15, offset: Offset(5, 5),
+                                ),
+                              ],
+                            ),
+                            child: Row(
+                              children: [
+                                ElevatedButton(
+                                  onPressed: () {},
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: AppColors.yellow,
+                                    textStyle: TextStyle(color: Colors.white),
+                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 30,vertical: 20),
+                                  ),
+
+                                  child: Text('HIRE ME NOW',style: TextStyle(color: Colors.white),),
+                                ),
+                                const SizedBox(width: 20),
+                                ElevatedButton(
+                                  onPressed: _downloadCV,
+                                  style: ElevatedButton.styleFrom(
                                     textStyle:TextStyle(color: Colors.white),
-                                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
-                                        backgroundColor: AppColors.black,
+                                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
+                                    backgroundColor: AppColors.black,
 
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 30,vertical: 20),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 30,vertical: 20),
+                                  ),
+                                  child: Text('VIEW RESUME',style: TextStyle(color: Colors.white)),
                                 ),
-                                child: Text('VIEW RESUME',style: TextStyle(color: Colors.white)),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ],
                       ),
@@ -136,8 +173,8 @@ class About extends StatelessWidget {
                 ),
                 // height: 500,
                 decoration: BoxDecoration(
-                  // color: Colors.black,
-                  image:DecorationImage(image: AssetImage("images/skills_bg.jpg"),fit: BoxFit.fill),
+                  color: Color(0xFFECF0F3),
+                  // image:DecorationImage(image: AssetImage("images/skill_backgroung_image.png"),fit: BoxFit.fill),
                 ),
                 child: Column(
                   children: [
@@ -166,7 +203,7 @@ class About extends StatelessWidget {
           ),
         ),
         mobileScreen: Container(
-          color: Colors.white,
+          color: Color(0xFFECF0F3),
           padding: EdgeInsets.symmetric(
             horizontal: MediaQuery.of(context).size.width * .05,
             vertical: 50,
@@ -197,9 +234,10 @@ class About extends StatelessWidget {
               Text(
                 _description,
                 style: GoogleFonts.poppins(
-                  color: Colors.black,
+                  color: Color(0xFF3c3e41),
                   fontSize: 13,
                 ),
+                textAlign: TextAlign.center,
               ),
               const SizedBox(height: 30),
               ElevatedButton(
@@ -209,7 +247,7 @@ class About extends StatelessWidget {
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
 
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 30,vertical: 20),
+                    const EdgeInsets.symmetric(horizontal: 25,vertical: 17),
                 ),
                 child: Text('HIRE ME NOW',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400),),
               ),
@@ -221,15 +259,15 @@ class About extends StatelessWidget {
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
 
                   padding:
-                  const EdgeInsets.symmetric(horizontal: 30,vertical: 20),
+                  const EdgeInsets.symmetric(horizontal: 25,vertical: 17),
                 ),
                 child: Text('VIEW RESUME',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w400),),
               ),
               const SizedBox(height: 50),
              Container(
                decoration: BoxDecoration(
-                 // color: Colors.black,
-                 image:DecorationImage(image: AssetImage("images/skills_bg.jpg"),fit: BoxFit.fill),
+                 color: Color(0xFFECF0F3),
+                 // image:DecorationImage(image: AssetImage("images/skill_backgroung_image.png"),fit: BoxFit.fill),
                ),
                child: Column(
                  children: [
@@ -264,21 +302,29 @@ class About extends StatelessWidget {
     launch(AppConstants.cv);
   }
 
+  // Widget _buildSkill(Skill skill) => Container(
+  //   decoration: BoxDecoration(
+  //   color: Colors.white,
+  //     boxShadow: [
+  //       BoxShadow(color: Colors.black12.withOpacity(0.059),spreadRadius: 2,blurRadius: 5)
+  //     ]
+  //   ),
+  //   padding: EdgeInsets.symmetric(horizontal: 40,vertical: 10),
+  //   margin: EdgeInsets.symmetric(horizontal: 2,vertical: 2),
+  //   child: Text(skill.name!),
+  // );
+
   Widget _buildSkill(Skill skill) => Container(
     decoration: BoxDecoration(
-    color: Colors.white,
-      boxShadow: [
-        BoxShadow(color: Colors.black12.withOpacity(0.059),spreadRadius: 2,blurRadius: 5)
-      ]
+        gradient: LinearGradient(colors: [Colors.white,Color(0xFFe2e8ec)],begin: Alignment.bottomRight,end: Alignment.topLeft),
+        borderRadius: BorderRadius.circular(3),
+        boxShadow: [
+          BoxShadow(color: Colors.white,blurRadius: 10,offset: Offset(-5, -5),),
+          BoxShadow(color: Color(0xFFD1D9E6),blurRadius: 15,offset: Offset(5, 5)),
+        ]
     ),
     padding: EdgeInsets.symmetric(horizontal: 40,vertical: 10),
     margin: EdgeInsets.symmetric(horizontal: 2,vertical: 2),
     child: Text(skill.name!),
   );
-
-  // Widget _buildSkill(Skill skill) => Chip(
-  //   side: BorderSide.none,
-  //     color: WidgetStatePropertyAll(Colors.grey.withOpacity(0.3)),
-  //     shape: StadiumBorder(),
-  //     label: Text(skill.name!));
 }

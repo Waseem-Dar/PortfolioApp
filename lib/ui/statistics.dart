@@ -10,10 +10,10 @@ class Statistics extends StatelessWidget {
   Widget build(BuildContext context) {
     return ResponsiveWidget(
       desktopScreen: Container(
-        height: 350,
-        // color: Colors.black.withOpacity(0.9),
+        height: 300,
         decoration: BoxDecoration(
-            image: DecorationImage(image: AssetImage("images/footer_bg.jpg"),fit: BoxFit.fill)
+        color: Colors.black.withOpacity(0.6),
+            // image: DecorationImage(image: AssetImage("images/footer_bg.jpg"),fit: BoxFit.fill)
         ),
         padding: EdgeInsets.symmetric(
           horizontal: MediaQuery.of(context).size.width * .15,
@@ -21,17 +21,17 @@ class Statistics extends StatelessWidget {
         child:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
              _buildStatistic(
-              context, 'icons/briefcase.png', '4+', 'Years of Experience',),
+              context, 'icons/briefcase.png', '2+', 'Experience',),
              _buildStatistic(context, 'icons/menu.png', '${PROJECTS.length}+',
-              'Projects Done',),
-             _buildStatistic(context, 'icons/happy.png', '50+', 'Happy Clients',),
+              'Projects',),
+             _buildStatistic(context, 'icons/happy.png', '50+', 'Clients',),
             _buildStatistic(context, 'icons/coffee.png', '∞', 'Coffee Cups',),
         ]),
       ),
       mobileScreen: Container(
-        // color: Colors.black.withOpacity(0.9),
         decoration: BoxDecoration(
-          image: DecorationImage(image: AssetImage("images/footer_bg.jpg"),fit: BoxFit.fill)
+        color: Colors.black.withOpacity(0.6),
+          // image: DecorationImage(image: AssetImage("images/footer_bg.jpg"),fit: BoxFit.fill)
         ),
         padding: EdgeInsets.symmetric(
           horizontal: MediaQuery.of(context).size.width * .15,
@@ -40,12 +40,12 @@ class Statistics extends StatelessWidget {
         child: Column(
           children: [
             _buildStatistic(
-                context, 'icons/briefcase.png', '4+', 'Years of Experience',),
+                context, 'icons/briefcase.png', '2+', 'Experience',),
             const SizedBox(height: 50),
             _buildStatistic(context, 'icons/menu.png', '${PROJECTS.length}+',
-                'Projects Done',),
+                'Projects',),
             const SizedBox(height: 50),
-            _buildStatistic(context, 'icons/happy.png', '50+', 'Happy Clients',),
+            _buildStatistic(context, 'icons/happy.png', '50+', 'Clients',),
             const SizedBox(height: 50),
             _buildStatistic(context, 'icons/coffee.png', '∞', 'Coffee Cups', ),
           ],
@@ -66,7 +66,7 @@ class Statistics extends StatelessWidget {
             const SizedBox(height: 5),
             Text(
               total,
-              style: TextStyle(
+              style: GoogleFonts.quicksand(
                 color: Colors.white,
                 fontSize: 40,
                 fontWeight: FontWeight.w800,
@@ -74,12 +74,12 @@ class Statistics extends StatelessWidget {
             ),
             const SizedBox(height: 5),
             Text(
-              description,
-              style:GoogleFonts.poppins(
+              description.toUpperCase(),
+              style:GoogleFonts.quicksand(
                 color: Colors.white,
-                fontSize: 15,
-                fontWeight: FontWeight.w700,
-              )
+                fontSize: 14,
+                fontWeight: FontWeight.w400,letterSpacing: 5,
+              ),
             ),
           ],
         ),
@@ -92,7 +92,7 @@ class Statistics extends StatelessWidget {
             const SizedBox(height: 5),
             Text(
               total,
-              style: TextStyle(
+              style: GoogleFonts.quicksand(
                 color: Colors.white,
                 fontSize: 25,
                 fontWeight: FontWeight.w800,
@@ -101,10 +101,10 @@ class Statistics extends StatelessWidget {
             const SizedBox(height: 5),
             Text(
               description,
-              style:GoogleFonts.poppins(
+              style:GoogleFonts.quicksand(
                 color: Colors.white,
-                fontSize: 15,
-                fontWeight: FontWeight.w700,
+                fontSize: 14,
+                fontWeight: FontWeight.w400,letterSpacing:5
               )
             ),
           ],

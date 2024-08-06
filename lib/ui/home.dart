@@ -33,7 +33,7 @@ class _HomeState extends State<Home> {
   final _scrollController = ScrollController();
 
   final _fabStream = StreamController<bool>();
-
+  bool _isHovered = false;
   @override
   void initState() {
     super.initState();
@@ -49,8 +49,8 @@ class _HomeState extends State<Home> {
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('images/background.jpg'),
-              fit: BoxFit.cover,
+              image: AssetImage('images/cover_bg_2.jpg'),
+              fit: BoxFit.cover,alignment: Alignment.center
             ),
           ),
           child: CustomScrollView(
@@ -64,8 +64,8 @@ class _HomeState extends State<Home> {
                 flexibleSpace: Container(
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('images/cover.jpg'),
-                      fit: BoxFit.cover,
+                      image: AssetImage('images/header_bg.jpg'),
+                      fit: BoxFit.cover,colorFilter: ColorFilter.mode(Colors.black54, BlendMode.darken)
                     ),
                   ),
                   child: Container(
@@ -296,8 +296,8 @@ class _HomeState extends State<Home> {
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('images/background.jpg'),
-              fit: BoxFit.cover,
+              image: AssetImage('images/cover_bg_2.jpg'),
+              fit: BoxFit.cover,alignment: Alignment.center
             ),
           ),
           child: CustomScrollView(
@@ -329,8 +329,8 @@ class _HomeState extends State<Home> {
                 flexibleSpace: Container(
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('images/cover.jpg'),
-                      fit: BoxFit.cover,
+                      image: AssetImage('images/header_bg.jpg'),
+                      fit: BoxFit.cover,colorFilter: ColorFilter.mode(Colors.black54, BlendMode.darken)
                     ),
                   ),
                   child: Container(
@@ -395,13 +395,25 @@ class _HomeState extends State<Home> {
         return AnimatedOpacity(
           opacity: showFab ? 1 : 0,
           duration: const Duration(milliseconds: 500),
-          child: FloatingActionButton(
-            backgroundColor:AppColors.yellow ,
-            onPressed: showFab
-                ? _scrollToHeader
-                : null, // make sure user cannot click when button hidden
-            mini: true,
-            child: AppIcon('icons/double-up-arrow.png', size: 20),
+          child: MouseRegion(
+            onEnter: (_) => setState(() => _isHovered = true),
+            onExit: (_) => setState(() => _isHovered = false),
+            child: InkWell(
+              onTap: showFab ? _scrollToHeader : null,
+              child: Container(
+              height: 50,
+              width: 50,
+                decoration: BoxDecoration(
+                color: _isHovered ? AppColors.yellow : Colors.white.withOpacity(0.4),
+                  borderRadius: BorderRadius.circular(40),
+                  boxShadow: [BoxShadow(color: Colors.black12,blurRadius: 8)]
+                ),
+                // elevation: 0,
+                child: Icon(Icons.arrow_upward, size: 25,
+                  color: _isHovered ? Colors.white : AppColors.yellow!,
+                ),
+              ),
+            ),
           ),
         );
       },

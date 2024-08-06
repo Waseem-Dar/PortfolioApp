@@ -7,7 +7,7 @@ import '../config/constants.dart';
 import '../config/colors.dart';
 
 class Header extends StatelessWidget {
-  final String _name = "Abdelouahed";
+  final String _name = "Sabir";
   final String _job = "Mobile Developer";
   final String _description =
       "I am developer has around 1+ years experience developing Android and IOS mobile applications, using Flutter framework  and Dart programing language.";
@@ -20,11 +20,11 @@ class Header extends StatelessWidget {
             horizontal: MediaQuery.of(context).size.width * .15,
           ),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            // crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 'I’m $_name',
-                style: TextStyle(
+                style: GoogleFonts.merriweatherSans(
                   color: Colors.white,
                   fontSize: 40,
                   fontWeight: FontWeight.w900,
@@ -32,9 +32,9 @@ class Header extends StatelessWidget {
               ),
               Text(
                 _job,
-                style: TextStyle(
+                style: GoogleFonts.merriweatherSans(
                   color: AppColors.yellow,
-                  fontSize: 40,
+                  fontSize: 35,
                   fontWeight: FontWeight.w900,
                 ),
               ),
@@ -43,11 +43,11 @@ class Header extends StatelessWidget {
                 width: MediaQuery.of(context).size.width / 2,
                 child: Text(
                   _description,
-                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                  style: GoogleFonts.poppins(
 
                         color: Colors.grey[100],
-                        fontSize: 17,
-                      ),
+                        fontSize: 15,
+                      ),   textAlign: TextAlign.center,
                 ),
               ),
               const SizedBox(height: 30),
@@ -61,7 +61,7 @@ class Header extends StatelessWidget {
                 ),
 
                 onPressed: _downloadCV,
-                child: Text('Download CV',style: GoogleFonts.chakraPetch(color: Colors.white),),
+                child: Text('Download CV',style: GoogleFonts.chakraPetch(color: Colors.white,fontWeight: FontWeight.w700),),
               ),
               const SizedBox(height: 100),
             ],
@@ -77,7 +77,7 @@ class Header extends StatelessWidget {
               children: [
                 Text(
                   'I’m $_name',
-                  style: TextStyle(
+                  style: GoogleFonts.merriweatherSans(
                     color: Colors.white,
                     fontSize: 30,
                     fontWeight: FontWeight.w900,
@@ -85,7 +85,7 @@ class Header extends StatelessWidget {
                 ),
                 Text(
                   _job,
-                  style: TextStyle(
+                  style: GoogleFonts.merriweatherSans(
                     color: AppColors.yellow,
                     fontSize: 30,
                     fontWeight: FontWeight.w900,
@@ -96,9 +96,9 @@ class Header extends StatelessWidget {
                   width: MediaQuery.of(context).size.width,
                   child: Text(
                     _description,
-                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                    style: GoogleFonts.poppins(
                           color: Colors.grey[100],
-                          fontSize: 15,
+                          fontSize: 14,
                           height: 1.8,
                         ),
                     textAlign: TextAlign.center,
