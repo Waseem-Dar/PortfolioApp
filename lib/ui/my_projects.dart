@@ -11,6 +11,7 @@ class MyProjects extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ResponsiveWidget(
+      tabletScreen: Container(),
       desktopScreen: Container(
         // color: Colors.black.withOpacity(0.9),
         color: AppColors.greyLight,
@@ -67,6 +68,7 @@ class MyProjects extends StatelessWidget {
 
   Widget _buildProject(BuildContext context, Project project) =>
       ResponsiveWidget(
+        tabletScreen: Container(),
         desktopScreen: SizedBox(
           width: MediaQuery.of(context).size.width * .75,
           child: Column(

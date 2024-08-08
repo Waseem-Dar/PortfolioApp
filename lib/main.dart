@@ -6,7 +6,7 @@ import 'config/colors.dart';
 void main() {
   runApp(MyApp());
 }
-
+late double screenWidth;
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

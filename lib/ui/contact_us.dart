@@ -25,6 +25,7 @@ class _ContactUsState extends State<ContactUs> {
   @override
   Widget build(BuildContext context) {
     return ResponsiveWidget(
+      tabletScreen: Container(),
       desktopScreen: Container(
         decoration: BoxDecoration(
         color: Colors.white,

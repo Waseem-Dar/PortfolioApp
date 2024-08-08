@@ -16,6 +16,7 @@ class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ResponsiveWidget(
+      tabletScreen: Container(),
       desktopScreen: Container(
         color: Colors.black,
         padding: EdgeInsets.symmetric(
@@ -382,6 +383,7 @@ class Footer extends StatelessWidget {
           launch(project.url!);
         },
         child: ResponsiveWidget(
+          tabletScreen: Container(),
           desktopScreen: Container(
             color: AppColors.greyLight,
             padding: const EdgeInsets.all(15),

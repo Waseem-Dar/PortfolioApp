@@ -20,6 +20,7 @@ class _WorkingProcessState extends State<WorkingProcess> {
     final Uri designUri = Uri.parse("https://nandbox.com/how-to-design-a-great-mobile-app-without-hiring-a-designer-an-entry-level-guide/");
     final Uri codeUri = Uri.parse("https://docs.flutter.dev/");
     return ResponsiveWidget(
+      tabletScreen: Container(),
       desktopScreen: Container(
         color: Color(0xFFECF0F3),
         padding: EdgeInsets.symmetric(

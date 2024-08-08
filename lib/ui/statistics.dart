@@ -9,6 +9,7 @@ class Statistics extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ResponsiveWidget(
+      tabletScreen: Container(),
       desktopScreen: Container(
         height: 300,
         decoration: BoxDecoration(
@@ -57,6 +58,7 @@ class Statistics extends StatelessWidget {
   Widget _buildStatistic(
       BuildContext context, String icon, String total, String description, ) {
     return ResponsiveWidget(
+      tabletScreen: Container(),
       desktopScreen: Container(
         // width:MediaQuery.of(context).size.width * .17,
         child: Column(

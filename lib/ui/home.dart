@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_web_portfolio/main.dart';
 import 'package:flutter_web_portfolio/ui/responsive_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -44,7 +45,9 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    screenWidth = MediaQuery.of(context).size.width;
     return ResponsiveWidget(
+
       desktopScreen: Scaffold(
         body: Container(
           decoration: BoxDecoration(
@@ -161,6 +164,196 @@ class _HomeState extends State<Home> {
                   ),
                   SizedBox(width: MediaQuery.of(context).size.width * .15),
                 ],
+              ),
+              ..._slivers(),
+            ],
+          ),
+        ),
+        floatingActionButton: _buildFab(),
+      ),
+      tabletScreen: Scaffold(
+        drawer: Drawer(
+          surfaceTintColor: Colors.white,
+          backgroundColor: Colors.white,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Container(
+                  width: 100,
+                  height: 100,
+                  margin: const EdgeInsets.symmetric(vertical: 20),
+                  decoration: BoxDecoration(
+                    color: AppColors.yellow,
+                    borderRadius: BorderRadius.circular(1000),
+                  ),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(1000),
+                    child: Image.asset(
+                      'images/ouahid.png',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+                Divider(
+
+                ),
+                ListTile(
+                  onTap: _scrollToAbout,
+                  title: Text(
+                    'About Me',
+                    style: GoogleFonts.chakraPetch(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                ListTile(
+                  onTap: _scrollToStatistics,
+                  title: Text(
+                    'Experience',
+                    style: GoogleFonts.chakraPetch(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                ListTile(
+                  onTap: _scrollToWorkingProcess,
+                  title: Text(
+                    'Process',
+                    style: GoogleFonts.chakraPetch(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                ListTile(
+                  onTap: _scrollToRecentProjects,
+                  title: Text(
+                    'Portfolio',
+                    style: GoogleFonts.chakraPetch(fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Divider(),
+                const SizedBox(height: 20),
+                ListTile(
+                  title: ElevatedButton(
+                    onPressed: _scrollToContactUs,
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppColors.yellow,
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 40,
+                        vertical: 15,
+                      ),
+                    ),
+
+                    child: Text(
+                      'Contact Me',
+                      style: GoogleFonts.chakraPetch(fontWeight: FontWeight.bold,color: Colors.white),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 15),
+                Text("OR"),
+                const SizedBox(height: 15),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    InkWell(
+                      onTap: () async {
+                        launch(AppConstants.github);
+                      },
+                      child: AppIcon(
+                        'icons/github.png',
+                        color: AppColors.black,
+                      ),
+                    ),
+                    const SizedBox(width: 20),
+                    InkWell(
+                      onTap: () {
+                        launch(AppConstants.linkedin);
+                      },
+                      child: AppIcon(
+                        'icons/linkedin.png',
+                        color: AppColors.black,
+                      ),
+                    ),
+                    const SizedBox(width: 20),
+                    InkWell(
+                      onTap: () {
+                        launch(AppConstants.twitter);
+                      },
+                      child: AppIcon(
+                        'icons/twitter.png',
+                        color: AppColors.black,
+                      ),
+                    ),
+                    const SizedBox(width: 20),
+                    InkWell(
+                      onTap: () {
+                        launch(AppConstants.facebook);
+                      },
+                      child: AppIcon(
+                        'icons/facebook.png',
+                        color: AppColors.black,
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 20),
+              ],
+            ),
+          ),
+        ),
+        body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('images/cover_bg_2.jpg'),
+                fit: BoxFit.cover,alignment: Alignment.center
+            ),
+          ),
+          child: CustomScrollView(
+            controller: _scrollController,
+            slivers: [
+              SliverAppBar(
+                key: _headerGlobalKey,
+                titleSpacing: 0,
+                centerTitle: true,
+                backgroundColor: Colors.transparent,
+                leading: Align(
+                  child: Builder(
+                    builder: (ctx) => InkWell(
+                      onTap: () {
+                        Scaffold.of(ctx).openDrawer();
+                      },
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(1000),
+                        child: Container(
+                          width: 40,
+                          height: 40,
+                          color: AppColors.yellow,
+                          child: Image.asset('images/ouahid.png'),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                flexibleSpace: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage('images/header_bg.jpg'),
+                        fit: BoxFit.cover,colorFilter: ColorFilter.mode(Colors.black54, BlendMode.darken)
+                    ),
+                  ),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.bottomCenter,
+                        end: Alignment.topCenter,
+                        colors: [
+                          Colors.black87,
+                          Colors.black54,
+                          Colors.transparent
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                bottom: PreferredSize(
+                  preferredSize: Size.fromHeight(350),
+                  child: Header(),
+                ),
               ),
               ..._slivers(),
             ],
@@ -400,9 +593,11 @@ class _HomeState extends State<Home> {
             onExit: (_) => setState(() => _isHovered = false),
             child: InkWell(
               onTap: showFab ? _scrollToHeader : null,
-              child: Container(
+              child: AnimatedContainer(
+                duration: Duration(milliseconds: 100),
               height: 50,
               width: 50,
+                margin: EdgeInsets.all(10),
                 decoration: BoxDecoration(
                 color: _isHovered ? AppColors.yellow : Colors.white.withOpacity(0.4),
                   borderRadius: BorderRadius.circular(40),

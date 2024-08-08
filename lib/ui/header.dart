@@ -14,6 +14,7 @@ class Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ResponsiveWidget(
+    tabletScreen: Container(),
         desktopScreen: Container(
           width: double.infinity,
           padding: EdgeInsets.symmetric(

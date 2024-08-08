@@ -32,6 +32,7 @@ dependencies:
   mailto: ^2.0.0
   google_fonts: ^6.2.1
   url_launcher: ^6.3.0
+  flutter_animated_button: ^2.0.3
 
 dev_dependencies:
   flutter_test:
