@@ -1,7 +1,10 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_web_portfolio/main.dart';
 import 'package:flutter_web_portfolio/ui/icon.dart';
+import 'package:flutter_web_portfolio/widgets/contact_widget.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:mailto/mailto.dart';
 
 import 'responsive_widget.dart';
@@ -21,18 +24,14 @@ class _ContactUsState extends State<ContactUs> {
   final _nameController = TextEditingController(),
       _emailController = TextEditingController(),
       _contentController = TextEditingController();
-
+bool isHover = false;
   @override
   Widget build(BuildContext context) {
     return ResponsiveWidget(
       tabletScreen: Container(),
       desktopScreen: Container(
-        decoration: BoxDecoration(
-        color: Colors.white,
-            image: DecorationImage(image: AssetImage("images/skills_bg.jpg"),fit: BoxFit.fill)
-        ),
+        color: Color(0xFFECF0F3),
         padding: EdgeInsets.symmetric(
-          horizontal: MediaQuery.of(context).size.width * .15,
           vertical: 100,
 
         ),
@@ -51,8 +50,31 @@ class _ContactUsState extends State<ContactUs> {
             const SizedBox(height: 50),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Expanded(
+                Container(
+                  height: 600,
+                  width: screenWidth>=1400?600:400,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [Colors.white, Color(0xFFe2e8ec)],
+                      begin: Alignment.bottomRight,
+                      end: Alignment.topLeft,
+                    ),
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.white,
+                        blurRadius: 10,
+                        offset: Offset(-5, -5),
+                      ),
+                      BoxShadow(
+                        color: Color(0xFFD1D9E6),
+                        blurRadius: 15,
+                        offset: Offset(5, 5),
+                      ),
+                    ],
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -77,9 +99,83 @@ class _ContactUsState extends State<ContactUs> {
                     ],
                   ),
                 ),
-                Expanded(
-                  child: _buildContactForm(context),
-                ),
+                SizedBox(width: screenWidth>=1400?50:40,),
+                Container(
+                  height: 600,
+                  width: screenWidth>=1400?750:550,
+                  padding:EdgeInsets.all(25),
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [Colors.white, Color(0xFFe2e8ec)],
+                      begin: Alignment.bottomRight,
+                      end: Alignment.topLeft,
+                    ),
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.white,
+                        blurRadius: 10,
+                        offset: Offset(-5, -5),
+                      ),
+                      BoxShadow(
+                        color: Color(0xFFD1D9E6),
+                        blurRadius: 15,
+                        offset: Offset(5, 5),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(child: ContactSection.TextFieldWidget("your name",false)),
+                          SizedBox(width: 20,),
+                          Expanded(child: ContactSection.TextFieldWidget("phone number",false)),
+                        ],
+                      ),
+                      SizedBox(height: 20,),
+                      ContactSection.TextFieldWidget("Email",false),
+                      SizedBox(height: 20,),
+                      ContactSection.TextFieldWidget("subject",false),
+                      SizedBox(height: 20,),
+                      ContactSection.TextFieldWidget("your message",true),
+                      SizedBox(height: 30,),
+                      MouseRegion(
+                        onEnter: (event) { setState(() =>isHover=true);},
+                        onExit: (event) { setState(() =>isHover=false);},
+
+                        child: InkWell(
+                          onTap: () {},
+                          child: AnimatedContainer(
+                            duration: Duration(milliseconds: 200),
+                            height:50,
+
+                            margin:EdgeInsets.only(top:isHover?0: 5),
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors:isHover?[AppColors.yellow!,AppColors.yellow!]: [Colors.white, Color(0xFFe2e8ec)],
+                                begin: Alignment.bottomRight, end: Alignment.topLeft,
+                              ),
+                              borderRadius: BorderRadius.circular(5),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.white,blurRadius: 10, offset: Offset(-5, -5),
+                                ),
+                                BoxShadow(
+                                  color: Color(0xFFD1D9E6), blurRadius: 15, offset: Offset(5, 5),
+                                ),
+                              ],
+                            ),
+                            child: Center(child: Text("SEND MESSAGE",style: GoogleFonts.poppins(color:isHover?Colors.white:AppColors.yellow,fontWeight: FontWeight.w500,fontSize: 14,),)),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                )
+                // Expanded(
+                //   child: _buildContactForm(context),
+                // ),
               ],
             )
           ],
@@ -88,7 +184,6 @@ class _ContactUsState extends State<ContactUs> {
       mobileScreen: Container(
         decoration: BoxDecoration(
         color: Colors.white,
-            image: DecorationImage(image: AssetImage("images/skills_bg.jpg"),fit: BoxFit.fill)
         ),
         padding: EdgeInsets.symmetric(
           horizontal: MediaQuery.of(context).size.width * .15,

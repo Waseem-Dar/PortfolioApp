@@ -389,14 +389,14 @@ class Footer extends StatelessWidget {
             padding: const EdgeInsets.all(15),
             width: MediaQuery.of(context).size.width * .1,
             height: MediaQuery.of(context).size.width * .1,
-            child: Image.asset(project.image!),
+            child: Image.network(project.image!),
           ),
           mobileScreen: Container(
             color: AppColors.greyLight,
             padding: const EdgeInsets.all(15),
             width: MediaQuery.of(context).size.width * .2,
             height: MediaQuery.of(context).size.width * .2,
-            child: Image.asset(project.image!),
+            child: Image.network(project.image!),
           ),
         ),
       );

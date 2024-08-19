@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_portfolio/main.dart';
 import 'package:flutter_web_portfolio/ui/responsive_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -20,9 +21,10 @@ class _WorkingProcessState extends State<WorkingProcess> {
     final Uri designUri = Uri.parse("https://nandbox.com/how-to-design-a-great-mobile-app-without-hiring-a-designer-an-entry-level-guide/");
     final Uri codeUri = Uri.parse("https://docs.flutter.dev/");
     return ResponsiveWidget(
-      tabletScreen: Container(),
+
       desktopScreen: Container(
         color: Color(0xFFECF0F3),
+        width: screenWidth>=1400?1400:null,
         padding: EdgeInsets.symmetric(
           horizontal: MediaQuery.of(context).size.width * .1,
           vertical: 100,
@@ -40,57 +42,120 @@ class _WorkingProcessState extends State<WorkingProcess> {
             const SizedBox(height: 3),
             Container(width: 75, height: 2, color: AppColors.yellow),
             const SizedBox(height: 50),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            Container(
+              width: screenWidth>=1400?1400:null,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Expanded(
+                    child: __buildProcess(
+                      context,
+                      Color(0xFF7a1be7),
+                      'icons/pencil.png',
+                      'Plan',
+                      'Understanding project requirements, conducting research, and creating a roadmap to ensure successful app development',
+                      100,
+                      "Project Roadmap",
+                      planUri,
+                      "View plan",
+                      0,
+                    ),
+                  ),
+                  const SizedBox(width: 20),
+                  Expanded(
+                    child: __buildProcess(
+                      context,
+                      Color(0xFFff2d7f),
+                      'icons/design.png',
+                      'Design',
+                      'Crafting intuitive and visually appealing user interfaces, focusing on user experience and accessibility.',
+                      100,
+                      "UI / User Experience",
+                      designUri,
+                      "Learn more",
+                      1,
+                    ),
+                  ),
+                  const SizedBox(width: 20),
+                  Expanded(
+                    child: __buildProcess(
+                      context,
+                      Color(0xFF0055ff),
+                      'icons/coding.png',
+                      'Code',
+                      'Implementing the design into functional code using Flutter, adhering to best practices and ensuring performance optimization.',
+                      100,
+
+                      "Flutter Implementation",
+                      codeUri,
+                      "Read docs",
+                      2,
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+      tabletScreen: Container(
+        color: Color(0xFFECF0F3),
+        padding: EdgeInsets.symmetric(
+          horizontal: MediaQuery.of(context).size.width * .10,
+          vertical: 50,
+        ),
+        child: Column(
+          children: [
+            Stack(
+              alignment: Alignment.bottomCenter,
               children: [
-                Expanded(
-                  child: __buildProcess(
-                    context,
-                    Color(0xFF7a1be7),
-                    'icons/pencil.png',
-                    'Plan',
-                    'Understanding project requirements, conducting research, and creating a roadmap to ensure successful app development',
-                    100,
-                    "images/bg1.png",
-                    "Project Roadmap",
-                    planUri,
-                    "View plan",
-                    0,
-                  ),
-                ),
-                const SizedBox(width: 20),
-                Expanded(
-                  child: __buildProcess(
-                    context,
-                    Color(0xFFff2d7f),
-                    'icons/design.png',
-                    'Design',
-                    'Crafting intuitive and visually appealing user interfaces, focusing on user experience and accessibility.',
-                    100,
-                    "images/bg2.png",
-                    "UI / User Experience",
-                    designUri,
-                    "Learn more",
-                    1,
-                  ),
-                ),
-                const SizedBox(width: 20),
-                Expanded(
-                  child: __buildProcess(
-                    context,
-                    Color(0xFF0055ff),
-                    'icons/coding.png',
-                    'Code',
-                    'Implementing the design into functional code using Flutter, adhering to best practices and ensuring performance optimization.',
-                    100,
-                    "images/bg3.png",
-                    "Flutter Implementation",
-                    codeUri,
-                    "Read docs",
-                    2,
-                  ),
-                )
+                AppTitle("WORKING PROCESS", 33, 0.05),
+                AppTitle("WORKING PROCESS", 20, 0.8),
               ],
+            ),
+            Container(width: 75, height: 2, color: AppColors.yellow),
+            const SizedBox(height: 3),
+            Container(width: 50, height: 2, color: AppColors.yellow),
+            const SizedBox(height: 50),
+            __buildProcess(
+              context,
+              Color(0xFF7a1be7),
+              'icons/pencil.png',
+              'Plan',
+              'Understanding project requirements, conducting research, and creating a roadmap to ensure successful app development.',
+              80,
+              "Project Roadmap",
+              planUri,
+              "View plan",
+              0,
+            ),
+            const SizedBox(height: 20),
+            __buildProcess(
+              context,
+              Color(0xFFff2d7f),
+              'icons/design.png',
+              'Design',
+              'Crafting intuitive and visually appealing user interfaces, focusing on user experience and accessibility.',
+              80,
+
+              "UI / User Experience",
+              designUri,
+              "Learn more",
+              1,
+            ),
+            const SizedBox(height: 20),
+            __buildProcess(
+              context,
+              Color(0xFF0055ff),
+              'icons/coding.png',
+              'Code',
+              'Implementing the design into functional code using Flutter, adhering to best practices and ensuring performance optimization.',
+              80,
+
+              "Flutter Implementation",
+              codeUri,
+              "Read docs",
+              2,
             ),
           ],
         ),
@@ -121,7 +186,6 @@ class _WorkingProcessState extends State<WorkingProcess> {
               'Plan',
               'Understanding project requirements, conducting research, and creating a roadmap to ensure successful app development.',
               80,
-              "images/bg1.png",
               "Project Roadmap",
               planUri,
               "View plan",
@@ -135,7 +199,7 @@ class _WorkingProcessState extends State<WorkingProcess> {
               'Design',
               'Crafting intuitive and visually appealing user interfaces, focusing on user experience and accessibility.',
               80,
-              "images/bg2.png",
+
               "UI / User Experience",
               designUri,
               "Learn more",
@@ -149,7 +213,7 @@ class _WorkingProcessState extends State<WorkingProcess> {
               'Code',
               'Implementing the design into functional code using Flutter, adhering to best practices and ensuring performance optimization.',
               80,
-              "images/bg3.png",
+
               "Flutter Implementation",
               codeUri,
               "Read docs",
@@ -167,7 +231,7 @@ class _WorkingProcessState extends State<WorkingProcess> {
       String title,
       String description,
       double height,
-      String image,
+
       String title1,
       Uri uri,
       String bText,

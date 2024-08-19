@@ -25,11 +25,11 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   final _headerGlobalKey = GlobalKey();
-  final _aboutGlobaleKey = GlobalKey();
-  final _statisticsGlobaleKey = GlobalKey();
-  final _workingProcessGlobaleKye = GlobalKey();
-  final _recentProjectsGlobaleKey = GlobalKey();
-  final _contactUsGlobaleKey = GlobalKey();
+  final _aboutGlobalKey = GlobalKey();
+  final _statisticsGlobalKey = GlobalKey();
+  final _workingProcessGlobalKye = GlobalKey();
+  final _recentProjectsGlobalKey = GlobalKey();
+  final _contactUsGlobalKey = GlobalKey();
 
   final _scrollController = ScrollController();
 
@@ -49,13 +49,13 @@ class _HomeState extends State<Home> {
     return ResponsiveWidget(
 
       desktopScreen: Scaffold(
-        body: Container(
-          decoration: BoxDecoration(
+        body:Container(
+            decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('images/cover_bg_2.jpg'),
-              fit: BoxFit.cover,alignment: Alignment.center
+            image: AssetImage('images/cover_bg_2.jpg'),
+            fit: BoxFit.cover,alignment: Alignment.center,
             ),
-          ),
+            ),
           child: CustomScrollView(
             controller: _scrollController,
             slivers: [
@@ -65,6 +65,7 @@ class _HomeState extends State<Home> {
                 toolbarHeight: 100,
                 backgroundColor: Colors.transparent,
                 flexibleSpace: Container(
+                  // width: screenWidth>=1400?1400:null,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: AssetImage('images/header_bg.jpg'),
@@ -165,6 +166,7 @@ class _HomeState extends State<Home> {
                   SizedBox(width: MediaQuery.of(context).size.width * .15),
                 ],
               ),
+
               ..._slivers(),
             ],
           ),
@@ -173,29 +175,28 @@ class _HomeState extends State<Home> {
       ),
       tabletScreen: Scaffold(
         drawer: Drawer(
-          surfaceTintColor: Colors.white,
-          backgroundColor: Colors.white,
+          surfaceTintColor: Color(0xFFECF0F3),
+          backgroundColor: Color(0xFFECF0F3),
           child: SingleChildScrollView(
             child: Column(
               children: [
                 Container(
-                  width: 100,
-                  height: 100,
-                  margin: const EdgeInsets.symmetric(vertical: 20),
+                  width: 120,
+                  height: 120,
+                  margin: const EdgeInsets.symmetric(vertical: 40),
                   decoration: BoxDecoration(
                     color: AppColors.yellow,
-                    borderRadius: BorderRadius.circular(1000),
+                    borderRadius: BorderRadius.circular(100),
                   ),
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(1000),
+                    borderRadius: BorderRadius.circular(100),
                     child: Image.asset(
                       'images/ouahid.png',
                       fit: BoxFit.cover,
                     ),
                   ),
                 ),
-                Divider(
-
+                Divider(height: 0.3,
                 ),
                 ListTile(
                   onTap: _scrollToAbout,
@@ -252,7 +253,7 @@ class _HomeState extends State<Home> {
                   children: [
                     InkWell(
                       onTap: () async {
-                        launch(AppConstants.github);
+                        // launch(AppConstants.github);
                       },
                       child: AppIcon(
                         'icons/github.png',
@@ -262,7 +263,7 @@ class _HomeState extends State<Home> {
                     const SizedBox(width: 20),
                     InkWell(
                       onTap: () {
-                        launch(AppConstants.linkedin);
+                        // launch(AppConstants.linkedin);
                       },
                       child: AppIcon(
                         'icons/linkedin.png',
@@ -272,7 +273,7 @@ class _HomeState extends State<Home> {
                     const SizedBox(width: 20),
                     InkWell(
                       onTap: () {
-                        launch(AppConstants.twitter);
+                        // launch(AppConstants.twitter);
                       },
                       child: AppIcon(
                         'icons/twitter.png',
@@ -282,7 +283,7 @@ class _HomeState extends State<Home> {
                     const SizedBox(width: 20),
                     InkWell(
                       onTap: () {
-                        launch(AppConstants.facebook);
+                        // launch(AppConstants.facebook);
                       },
                       child: AppIcon(
                         'icons/facebook.png',
@@ -363,29 +364,28 @@ class _HomeState extends State<Home> {
       ),
       mobileScreen: Scaffold(
         drawer: Drawer(
-          surfaceTintColor: Colors.white,
-          backgroundColor: Colors.white,
+          surfaceTintColor:Color(0xFFECF0F3),
+          backgroundColor: Color(0xFFECF0F3),
           child: SingleChildScrollView(
             child: Column(
               children: [
                 Container(
-                  width: 100,
-                  height: 100,
-                  margin: const EdgeInsets.symmetric(vertical: 20),
+                  width: 150,
+                  height: 150,
+                  margin: const EdgeInsets.symmetric(vertical: 40),
                   decoration: BoxDecoration(
                     color: AppColors.yellow,
-                    borderRadius: BorderRadius.circular(1000),
+                    borderRadius: BorderRadius.circular(100),
                   ),
                   child: ClipRRect(
-                    borderRadius: BorderRadius.circular(1000),
+                    borderRadius: BorderRadius.circular(100),
                     child: Image.asset(
                       'images/ouahid.png',
                       fit: BoxFit.cover,
                     ),
                   ),
                 ),
-                Divider(
-
+                Divider(height: 0.5,
                 ),
                 ListTile(
                   onTap: _scrollToAbout,
@@ -442,7 +442,7 @@ class _HomeState extends State<Home> {
                   children: [
                     InkWell(
                       onTap: () async {
-                        launch(AppConstants.github);
+                        // launch(AppConstants.github);
                       },
                       child: AppIcon(
                         'icons/github.png',
@@ -452,7 +452,7 @@ class _HomeState extends State<Home> {
                     const SizedBox(width: 20),
                     InkWell(
                       onTap: () {
-                        launch(AppConstants.linkedin);
+                        // launch(AppConstants.linkedin);
                       },
                       child: AppIcon(
                         'icons/linkedin.png',
@@ -462,7 +462,7 @@ class _HomeState extends State<Home> {
                     const SizedBox(width: 20),
                     InkWell(
                       onTap: () {
-                        launch(AppConstants.twitter);
+                        // launch(AppConstants.twitter);
                       },
                       child: AppIcon(
                         'icons/twitter.png',
@@ -472,7 +472,7 @@ class _HomeState extends State<Home> {
                     const SizedBox(width: 20),
                     InkWell(
                       onTap: () {
-                        launch(AppConstants.facebook);
+                        // launch(AppConstants.facebook);
                       },
                       child: AppIcon(
                         'icons/facebook.png',
@@ -545,6 +545,7 @@ class _HomeState extends State<Home> {
                   child: Header(),
                 ),
               ),
+
               ..._slivers(),
             ],
           ),
@@ -556,23 +557,23 @@ class _HomeState extends State<Home> {
 
   List<Widget> _slivers() => [
         SliverToBoxAdapter(
-          key: _aboutGlobaleKey,
+          key: _aboutGlobalKey,
           child: About(),
         ),
         SliverToBoxAdapter(
-          key: _statisticsGlobaleKey,
+          key: _statisticsGlobalKey,
           child: Statistics(),
         ),
         SliverToBoxAdapter(
-          key: _workingProcessGlobaleKye,
+          key: _workingProcessGlobalKye,
           child: WorkingProcess(),
         ),
         SliverToBoxAdapter(
-          key: _recentProjectsGlobaleKey,
+          key: _recentProjectsGlobalKey,
           child: MyProjects(),
         ),
         SliverToBoxAdapter(
-          key: _contactUsGlobaleKey,
+          key: _contactUsGlobalKey,
           child: ContactUs(),
         ),
         SliverToBoxAdapter(
@@ -624,35 +625,35 @@ class _HomeState extends State<Home> {
 
   void _scrollToAbout() {
     Scrollable.ensureVisible(
-      _aboutGlobaleKey.currentContext!,
+      _aboutGlobalKey.currentContext!,
       duration: const Duration(seconds: 1),
     );
   }
 
   void _scrollToStatistics() {
     Scrollable.ensureVisible(
-      _statisticsGlobaleKey.currentContext!,
+      _statisticsGlobalKey.currentContext!,
       duration: const Duration(seconds: 1),
     );
   }
 
   void _scrollToWorkingProcess() {
     Scrollable.ensureVisible(
-      _workingProcessGlobaleKye.currentContext!,
+      _workingProcessGlobalKye.currentContext!,
       duration: const Duration(seconds: 1),
     );
   }
 
   void _scrollToRecentProjects() {
     Scrollable.ensureVisible(
-      _recentProjectsGlobaleKey.currentContext!,
+      _recentProjectsGlobalKey.currentContext!,
       duration: const Duration(seconds: 1),
     );
   }
 
   void _scrollToContactUs() {
     Scrollable.ensureVisible(
-      _contactUsGlobaleKey.currentContext!,
+      _contactUsGlobalKey.currentContext!,
       duration: const Duration(seconds: 1),
     );
   }

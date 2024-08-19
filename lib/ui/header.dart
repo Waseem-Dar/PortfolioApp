@@ -14,7 +14,7 @@ class Header extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ResponsiveWidget(
-    tabletScreen: Container(),
+
         desktopScreen: Container(
           width: double.infinity,
           padding: EdgeInsets.symmetric(
@@ -68,6 +68,61 @@ class Header extends StatelessWidget {
             ],
           ),
         ),
+         tabletScreen: Container(
+           width: double.infinity,
+           padding: EdgeInsets.symmetric(
+             horizontal: MediaQuery.of(context).size.width * .15,
+           ),
+           child: FittedBox(
+             child: Column(
+               children: [
+                 Text(
+                   'I’m $_name',
+                   style: GoogleFonts.merriweatherSans(
+                     color: Colors.white,
+                     fontSize: 30,
+                     fontWeight: FontWeight.w900,
+                   ),
+                 ),
+                 Text(
+                   _job,
+                   style: GoogleFonts.merriweatherSans(
+                     color: AppColors.yellow,
+                     fontSize: 30,
+                     fontWeight: FontWeight.w900,
+                   ),
+                 ),
+                 const SizedBox(height: 5),
+                 SizedBox(
+                   width: MediaQuery.of(context).size.width,
+                   child: Text(
+                     _description,
+                     style: GoogleFonts.poppins(
+                       color: Colors.grey[100],
+                       fontSize: 14,
+                       height: 1.8,
+                     ),
+                     textAlign: TextAlign.center,
+                   ),
+                 ),
+                 const SizedBox(height: 30),
+                 ElevatedButton(
+                   style: ElevatedButton.styleFrom(
+                     backgroundColor: AppColors.yellow,
+                     textStyle: TextStyle(color: Colors.white),
+                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
+                     padding:
+                     const EdgeInsets.symmetric(horizontal: 30,vertical: 20),
+                   ),
+
+                   onPressed: _downloadCV,
+                   child: Text('Download CV',style: GoogleFonts.chakraPetch(color: Colors.white),),
+                 ),
+                 const SizedBox(height: 100),
+               ],
+             ),
+           ),
+         ),
         mobileScreen: Container(
           width: double.infinity,
           padding: EdgeInsets.symmetric(
