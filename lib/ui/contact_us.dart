@@ -25,6 +25,8 @@ class _ContactUsState extends State<ContactUs> {
       _emailController = TextEditingController(),
       _contentController = TextEditingController();
 bool isHover = false;
+bool isHover1 = false;
+bool isHover2 = false;
   @override
   Widget build(BuildContext context) {
     return ResponsiveWidget(
@@ -52,9 +54,109 @@ bool isHover = false;
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                MouseRegion(
+                  onEnter: (event) {setState(() =>isHover1=true);},
+                  onExit: (event) {setState(() =>isHover1=false);},
+                  child: Container(
+                    height: screenWidth>=1400?695:640,
+                    width: screenWidth>=1400?600:400,
+                    padding:EdgeInsets.all(screenWidth>=1400?45:25),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [Colors.white, Color(0xFFe2e8ec)],
+                        begin: Alignment.bottomRight,
+                        end: Alignment.topLeft,
+                      ),
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.white,
+                          blurRadius: 10,
+                          offset: Offset(-5, -5),
+                        ),
+                        BoxShadow(
+                          color: Color(0xFFD1D9E6),
+                          blurRadius: 15,
+                          offset: Offset(5, 5),
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          height:screenWidth>=1400?250:200,
+                          width:screenWidth>=1400?550:350,
+                          clipBehavior: Clip.hardEdge,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            // image: DecorationImage(image: AssetImage("images/contact1.png"),fit: BoxFit.cover,scale: isHover1?1.1:1.0)
+                          ),
+                          child: AnimatedScale(
+                            duration: Duration(milliseconds: 280),
+                            scale: isHover1?1.1:1.0,
+                            child: Image.asset("images/contact1.png",fit: BoxFit.cover),
+                          ),
+                        ),
+                        const SizedBox(height: 25),
+                        Text("You have an idea, I am here to turn your dream into real digital solution.",style: GoogleFonts.poppins(
+                          fontSize: 18,color: Color(0xFF3C3E41),fontWeight: FontWeight.w600
+                        ),),
+                        const SizedBox(height: 25),
+                        Text("I am available for freelance work. Connect with me via and call in to my account.",style: GoogleFonts.poppins(
+                            fontSize: 17,color: Color(0xFF4C4E49),fontWeight: FontWeight.w400
+                        ),),
+                        const SizedBox(height: 20),
+                        _buildContactInfo(
+                          'icons/email.png',
+                          'Email:',
+                          AppConstants.mail,
+                        ),
+                        const SizedBox(height: 8),
+                        _buildContactInfo(
+                          'icons/call.png',
+                          'Phone:',
+                          AppConstants.phone,
+                        ),
+                        const SizedBox(height: 8),
+                        _buildContactInfo(
+                          'icons/pin.png',
+                          'Visit:',
+                          AppConstants.location,
+                        ),
+                        // const SizedBox(height: 15),
+                        SizedBox(height: 15,),
+                        Text("find with us".toUpperCase(),style: GoogleFonts.montserrat(color: Color(0xFF1E2125),fontWeight:FontWeight.w600,fontSize: 15),),
+                       SizedBox(height: 5,),
+                      Row(
+                        children: [
+                          ContactSection.SocialIconWidget("images/facebook_icon.png", isHover2,
+                                () {},
+                                () {setState(() =>isHover2 = true);},
+                                () {setState(() =>isHover2 = false);},
+                          ),
+                          ContactSection.SocialIconWidget("images/linkedin_icon.png", isHover2,
+                                () {},
+                                () {setState(() =>isHover2 = true);},
+                                () {setState(() =>isHover2 = false);},
+                          ),
+                          ContactSection.SocialIconWidget("images/instagram_icon.png", isHover2,
+                                () {},
+                                () {setState(() =>isHover2 = true);},
+                                () {setState(() =>isHover2 = false);},
+                          ),
+                        ],
+                      )
+
+                      ],
+                    ),
+                  ),
+                ),
+                SizedBox(width: screenWidth>=1400?50:40,),
                 Container(
-                  height: 600,
-                  width: screenWidth>=1400?600:400,
+                  height:screenWidth>=1400?695: 640,
+                  width: screenWidth>=1400?750:550,
+                  padding:EdgeInsets.all(screenWidth>=1400?45:25),
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [Colors.white, Color(0xFFe2e8ec)],
@@ -78,54 +180,9 @@ bool isHover = false;
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const SizedBox(height: 10),
-                      _buildContactInfo(
-                        'icons/email.png',
-                        'Mail Us:',
-                        AppConstants.mail,
-                      ),
-                      const SizedBox(height: 20),
-                      _buildContactInfo(
-                        'icons/call.png',
-                        'Call Us:',
-                        AppConstants.phone,
-                      ),
-                      const SizedBox(height: 20),
-                      _buildContactInfo(
-                        'icons/pin.png',
-                        'Visit Us:',
-                        AppConstants.location,
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(width: screenWidth>=1400?50:40,),
-                Container(
-                  height: 600,
-                  width: screenWidth>=1400?750:550,
-                  padding:EdgeInsets.all(25),
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [Colors.white, Color(0xFFe2e8ec)],
-                      begin: Alignment.bottomRight,
-                      end: Alignment.topLeft,
-                    ),
-                    borderRadius: BorderRadius.circular(10),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.white,
-                        blurRadius: 10,
-                        offset: Offset(-5, -5),
-                      ),
-                      BoxShadow(
-                        color: Color(0xFFD1D9E6),
-                        blurRadius: 15,
-                        offset: Offset(5, 5),
-                      ),
-                    ],
-                  ),
-                  child: Column(
-                    children: [
+                      Text("Have Something To Write?",style: GoogleFonts.montserrat(fontSize: 25,fontWeight: FontWeight.w700,color: Color(0xFF3C3e41)),),
+                      // Spacer(),
+                      SizedBox(height:screenWidth>=1400?27: 12,),
                       Row(
                         children: [
                           Expanded(child: ContactSection.TextFieldWidget("your name",false)),
@@ -241,24 +298,19 @@ bool isHover = false;
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AppIcon(imagePath, color: AppColors.black.withOpacity(.7), size: 20),
+          // AppIcon(imagePath, color: AppColors.black.withOpacity(.7), size: 20),
+          Text(
+            title,
+            style: GoogleFonts.poppins(
+              color: Color(0xFF3C3E41),
+              fontWeight:FontWeight.w500,
+              fontSize: 17
+            ),
+          ),
           const SizedBox(width: 10),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                style: TextStyle(
-                  color: AppColors.black,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 5),
-              Text(
-                content,
-                style: TextStyle(color: AppColors.black.withOpacity(.7)),
-              ),
-            ],
+          Text(
+            content,
+            style: GoogleFonts.poppins(color:  Color(0xFF3C3E41),fontSize: 17,fontWeight: FontWeight.w400),
           )
         ],
       ),

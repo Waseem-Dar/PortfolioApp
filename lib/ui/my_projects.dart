@@ -125,7 +125,7 @@ class _MyProjectsState extends State<MyProjects> {
                       ),
                       child: AnimatedScale(
                         scale: isHoverImageList[index] ? 1.1 : 1.0,
-                        duration: Duration(milliseconds: 300),
+                        duration: Duration(milliseconds: 280),
                         child: Image.network(
                           project.image!,
                           fit: BoxFit.cover,
@@ -193,14 +193,10 @@ class _MyProjectsState extends State<MyProjects> {
                       launch(project.url!);
                     },
                         () {
-                      setState(() {
-                        isHoverList[index] = true;
-                      });
+                      setState(()=>isHoverList[index] = true);
                     },
                         () {
-                      setState(() {
-                        isHoverList[index] = false;
-                      });
+                      setState(()=>isHoverList[index] = false);
                     },
                     isHoverList[index],
                   )

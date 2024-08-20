@@ -7,6 +7,46 @@ class ContactSection{
 
 
 
+  static Widget SocialIconWidget(String iconPath,bool isHover,VoidCallback onTap,VoidCallback onEnter,VoidCallback onExit){
+  return MouseRegion(
+    onEnter: (event){onEnter();},
+    onExit: (event) {onExit();},
+    child: InkWell(
+      onTap: onTap,
+      child: AnimatedContainer(
+        duration: Duration(milliseconds: 280),
+        height: 60,
+        width: 60,
+        margin: EdgeInsets.only(top: isHover?0:5,right: 10),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors:isHover?[AppColors.yellow!,AppColors.yellow!]: [Colors.white, Color(0xFFe2e8ec)],
+            begin: Alignment.bottomRight,
+            end: Alignment.topLeft,
+          ),
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.white,
+              blurRadius: 10,
+              offset: Offset(-5, -5),
+            ),
+            BoxShadow(
+              color: Color(0xFFD1D9E6),
+              blurRadius: 15,
+              offset: Offset(5, 5),
+            ),
+          ],
+        ),
+        child: Center(child: ImageIcon(AssetImage(iconPath),size: 25,color:isHover?Colors.white: Color(0xFF3C3E41),),),
+      ),
+    ),
+  );
+  }
+
+
+
+
   static Widget TextFieldWidget(String labelText,bool isMessage){
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,6 +81,9 @@ class ContactSection{
       ],
     );
   }
+
+
+
 
 
 }
